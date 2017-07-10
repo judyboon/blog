@@ -29,7 +29,7 @@
    folders
 
 2. Locate '_includes/' folder. If it is not in jekyll website
-   directory, create one in the directory.
+   directory, create one in the directory
 
 3. add javascript into '_includes/head.html' in website
    directory. Check
@@ -38,7 +38,8 @@
 
 ## General instructions
 
-- Check [link] (https://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/)
+- Check
+  [link](https://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/)
 
 
 ## Tips
