@@ -36,7 +36,9 @@
    [link](http://csega.github.io/mypost/2017/03/28/how-to-set-up-mathjax-on-jekyll-and-github-properly.html)
 
 
-## Create site locally using jekyll
+## General instructions
+
+- Check [link] (https://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/)
 
 
 ## Tips
