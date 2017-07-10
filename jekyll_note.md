@@ -1,6 +1,8 @@
-# Tips for generating website with equations in Github Pages using jekyll
+# Generate website in Github Pages using jekyll
 
 ## Install jekyll
+
+- Check [quick_start](https://jekyllrb.com/docs/quickstart/)
 
 ## Basic steps:
 
@@ -11,8 +13,8 @@
 3. Make sure the jekyll version used next is consistent with its
    github version
 
-   1. comment `gem "jekyll", "3.5.0"`
-   2. uncomment `gem "github-pages", group: :jekyll_plugins`
+   1. comment `gem "jekyll", "3.5.0"` in "Gemfile"
+   2. uncomment `gem "github-pages", group: :jekyll_plugins` in "Gemfile"
    3. run `bundle update; bundle install`
    4. Check [link](https://github.com/github/pages-gem) for running a
       local version of jekyll which is consistent with Github Pages
