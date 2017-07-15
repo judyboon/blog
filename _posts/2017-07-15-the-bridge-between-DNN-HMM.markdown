@@ -51,7 +51,7 @@ Above problems can be solved efficiently with complexity $O(TK^2)$ where $K$ is 
 
 2. Backward pass variable $\beta_t(h) = p(f_{t+1}, \ldots, f_T \| x_t = h, \theta)$ with recursion
 
-	$$\beta_{t-1}(h') = \sum_h \( h(x_t = h | x_{t-1} = h') \beta_t(h) g(f_t | x_t = h) \)$$
+	$$\beta_{t-1}(h') = \sum_h \big( h(x_t = h | x_{t-1} = h') \beta_t(h) g(f_t | x_t = h) \big)$$
 
 3. Conditional state variable $\gamma_t(h) = p(x_t = h \| f_1, \ldots, f_T, \theta)$ with 
    
@@ -59,12 +59,12 @@ Above problems can be solved efficiently with complexity $O(TK^2)$ where $K$ is 
    
 4. Viterbi variable $\delta_t(h) = \max_{x_1, \cdots, x_{t-1}} p(f_1, \ldots, f_t, x_1, \cdots, x_{t-1}, x_t = h \| \theta)$ (Note the difference of $\delta_t(h)$ and $\alpha_t(h)$ is just substituting summation with maximization)
 
-5. Baum-Welch variable $\xi_t(h, h') = p(x_t = h, x_(t+1) = h' \| y_1, \ldots, y_T, \theta)$ with 
+5. Baum-Welch variable $\xi_t(h, h') = p(x_t = h, x_{t+1} = h' \| y_1, \ldots, y_T, \theta)$ with 
 
 	$$\xi_t(h, h') = \frac{\alpha_t(h) h(x_{t+1} = h' | x_t = h) g(y_{t+1} | x_{t+1} = h') \beta_{t+1}(h')}{ p(y_1, \ldots, y_T | \theta)} $$
 
 
-For the Baum-Welch variable, it is used for the EM algorithm for estimating $\theta$ combined with $\gamma_t(h)$. Note that $xi_t(h, h')$ is *expected number of transitions from $h$ to $h'$* and $\gamma_t(h)$ is *expected number of transitions from $h$*. Then the re-estimation of model parameters can be derived accordingly [^ref1].
+For the Baum-Welch variable, it is used for the EM algorithm for estimating $\theta$ combined with $\gamma_t(h)$. Note that $\xi_t(h, h')$ is *expected number of transitions from $h$ to $h'$* and $\gamma_t(h)$ is *expected number of transitions from $h$*. Then the re-estimation of model parameters can be derived accordingly [^ref1].
 
 
 Some references [^ref1], [^ref2], [^ref3], [^ref4]
