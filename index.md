@@ -5,4 +5,3 @@
 layout: home
 ---
 
-equation $$ a_i = b_i $$
