@@ -64,7 +64,7 @@ Above problems can be solved efficiently with complexity $O(TK^2)$ where $K$ is 
 	$$\xi_t(h, h') = \frac{\alpha_t(h) h(x_{t+1} = h' | x_t = h) g(y_{t+1} | x_{t+1} = h') \beta_{t+1}(h')}{ p(y_1, \ldots, y_T | \theta)} $$
 
 
-For the Baum-Welch variable, it is used for the EM algorithm for estimating $\theta$ combined with $\gamma_t(h)$. Note that $\xi_t(h, h')$ is *expected number of transitions from $h$ to $h'$* and $\gamma_t(h)$ is *expected number of transitions from $h$*. Then the re-estimation of model parameters can be derived accordingly [^ref1].
+For the last variable, it is used (combined with $\gamma_t(h)$) for the EM algorithm (the famous Baum-Welch algorithm) for estimating $\theta$. Note that $\xi_t(h, h')$ is *expected number of transitions from $h$ to $h'$* and $\gamma_t(h)$ is *expected number of transitions from $h$*. Then the re-estimation of model parameters can be derived accordingly [^ref1].
 
 
 Some references [^ref1], [^ref2], [^ref3], [^ref4]
