@@ -37,7 +37,7 @@ The emission distribution describes the distribution of observation given latent
 
 The three classic problems in HMM [^ref1] are 
 
-1. Given observation sequence $(f_1, \ldots, f_T)$ and parameters $\theta$, how to calculate the likelihood of $p(f_1, \ldots, f_T | \theta)$ with latent states marginalized out
+1. Given observation sequence $(f_1, \ldots, f_T)$ and parameters $\theta$, how to calculate the likelihood of $p(f_1, \ldots, f_T \| \theta)$ with latent states marginalized out
 
 2. Given observation and parameters, how to find the latent state sequence $(x_1, \ldots, x_T)$ that best explains the observation 
 
