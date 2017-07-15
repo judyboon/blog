@@ -139,9 +139,9 @@ maximum likelihood of observing the audio features.
 
 # Modeling emission distribution using DNN
 
-The emission distribution is often restricted to discrete, Gaussian or
-mixture of Gaussian in previous speech recognition task. Recently
-there has been a emergence where the emission distribution is replaced
+The emission distribution is often assumed to be discrete, Gaussian or
+mixture of Gaussian in previous speech recognition tasks. Recently
+there has been an emergence where the emission distribution is replaced
 with a deep neural network, leading to DNN/HMM framework. In this
 framework, a DNN is trained to estimate $p(x_t \| f_t)$. According to
 Bayes's law, we have
@@ -158,26 +158,35 @@ procedure
 
 1. Train a DNN/HMM based on a labeled data set, e.g. TIMIT
 
-2. Perform a Viterbi alignment to a test data set to find a its state
+2. Perform a Viterbi alignment to a test data set to find best state
    sequence using the estimated $p(f_t | x_t)$
 
-3. Use the estimated state sequence to train another DNN
+3. Use the best state sequence to train another DNN
 
 4. Repeat step 2 and 3 until convergence
 
 
+# Conclusion
+
+In this blog I have learned how the DNN is used in an HMM learning
+framework in speech recognition tasks. There is still a missing
+connection between how HMM models in unit level (e.g. phone) is used
+to estimate the text script given a audio input. In [^ref1] a method
+called **level building HMM** was mentioned. Probably will be the
+topic for my next blog.
 
 
-Some references [^ref1], [^ref2], [^ref3], [^ref4]
+# Some references
 
 
+[^ref1]: Lawrance R Rabiner, *A tutorial on hidden Markov models and
+    selected applications in speech recognition*, 1989
 
-[^ref1]: A tutorial on hidden Markov models and selected applications in speech recognition
+[^ref2]: Nelson Morgan and Herve Bourlard, *Connectionist speech
+    recognition: a hybrid approach*, 2012
 
-[^ref2]: An introduction to hybrid HMM/Connectionist continuous speech recognition
+[^ref3]: Geoffrey Hinton *et. al* *Deep neural networks for acoustic
+    modeling in speech recognition*, 2012
 
-[^ref3]: Deep neural networks for acoustic modeling in speech recognition
-
-[^ref4]: From HMMs to segment models: a unified view of stochastic modeling for speech recognition
 
 
