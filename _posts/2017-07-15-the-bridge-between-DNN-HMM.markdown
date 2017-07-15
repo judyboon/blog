@@ -33,7 +33,7 @@ The most important component in speech recognition is the HMM part (which might 
 
 * State transition distribution
 
-The emission distribution describes the distribution of observation given latent state $g(f_t | x_t)$ (I am using $f_i$ to denote the observation to make consistent with previous speech recognition process). The transition distribution describes the evolving law of the latent state $h(x_t | x_{t-1})$. These two distributions are assumed to follow certain parametric form with some unknown parameters $\theta = (\theta_g, \theta_h)$. 
+The emission distribution describes the distribution of observation given latent state $g(f_t \| x_t)$ (I am using $f_i$ to denote the observation to make consistent with previous speech recognition process). The transition distribution describes the evolving law of the latent state $h(x_t \| x_{t-1})$. These two distributions are assumed to follow certain parametric form with some unknown parameters $\theta = (\theta_g, \theta_h)$. 
 
 The three classic problems in HMM [^ref1] are 
 
