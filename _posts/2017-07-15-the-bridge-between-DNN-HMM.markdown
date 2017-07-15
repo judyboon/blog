@@ -117,8 +117,19 @@ For the last variable, it is used (combined with $\gamma_t(h)$) for
 the EM algorithm (the famous Baum-Welch algorithm) for estimating
 $\theta$. Note that $\xi_t(h, h')$ is *expected number of transitions
 from $h$ to $h'$* and $\gamma_t(h)$ is *expected number of transitions
-from $h$*. Then the re-estimation of model parameters can be derived
-accordingly [^ref1].
+from $h$*. Then the re-estimation of model transition distribution
+($h(\cdot | \cdot))$ can be derived accordingly [^ref1].
+
+The estimation of emission parameter can be derived using a process
+similar to EM estimation of standard GMM. The conditional state
+variable $\gamma_t(h)$ is analogous to the expectation of component
+indicator in GMM. By plugging in $\gamma_t(h)$ into the *E* step of
+GMM, the emission distribution parameter can be updated in the *M*
+step. The emission distribution is usually assumed to be Gaussian or
+mixtures of Gaussian to enable closed form update in Baum-Welch
+algorithm.
+
+
 
 
 Some references [^ref1], [^ref2], [^ref3], [^ref4]
