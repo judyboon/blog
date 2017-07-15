@@ -123,11 +123,47 @@ from $h$*. Then the re-estimation of model transition distribution
 The estimation of emission parameter can be derived using a process
 similar to EM estimation of standard GMM. The conditional state
 variable $\gamma_t(h)$ is analogous to the expectation of component
-indicator in GMM. By plugging in $\gamma_t(h)$ into the *E* step of
+indicator in GMM. By plugging $\gamma_t(h)$ into the *E* step of
 GMM, the emission distribution parameter can be updated in the *M*
 step. The emission distribution is usually assumed to be Gaussian or
 mixtures of Gaussian to enable closed form update in Baum-Welch
 algorithm.
+
+In speech recognition, it is usually the case where an individual HMM
+is fitted to some type of **unit**. The definition of unit could be a
+word or some other fine-grained linguistic units such as phones or
+syllables [^ref1]. Assuming the unit is in word level. Then each HMM
+is trained to fit a particular word. When unlabeled new word audio
+signal comes, the task reduces to finding which model gives the
+maximum likelihood of observing the audio features.
+
+# Modeling emission distribution using DNN
+
+The emission distribution is often restricted to discrete, Gaussian or
+mixture of Gaussian in previous speech recognition task. Recently
+there has been a emergence where the emission distribution is replaced
+with a deep neural network, leading to DNN/HMM framework. In this
+framework, a DNN is trained to estimate $p(x_t \| f_t)$. According to
+Bayes's law, we have
+
+$$ p(f_t | x_t) = \frac{p(x_t | f_t) * p(f_t)}{p(x_t)}. $$
+
+This equation suggests that the emission distribution could be
+estimated with a DNN model by dividing the "posterior" state
+distribution $p(x_t \| f_t)$ by the "prior" state distribution
+$p(x_t)$ [^ref2]. The factor $p(f_t)$ is common across all different
+states, therefore it is canceled in the Forward-Backward pass
+algorithms in HMM. This idea leads following iterative optimization
+procedure
+
+1. Train a DNN/HMM based on a labeled data set, e.g. TIMIT
+
+2. Perform a Viterbi alignment to a test data set to find a its state
+   sequence using the estimated $p(f_t | x_t)$
+
+3. Use the estimated state sequence to train another DNN
+
+4. Repeat step 2 and 3 until convergence
 
 
 
