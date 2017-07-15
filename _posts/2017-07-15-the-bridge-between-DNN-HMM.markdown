@@ -85,8 +85,10 @@ additional variables that are introduced to solve these problems are
 1. Forward pass variable $\alpha_t(h) = p(f_1, \ldots, f_t, x_t = h \|
    \theta)$ with recursion
 
-	$$\alpha_{t+1}(h') = \sum_h \big( \alpha_t(h) h(x_{t+1} = h' | x_t
-    = h) \big) g(f_{t+1} | x_{t+1} = h')$$
+	\begin{equation*}
+	\alpha_{t+1}(h') = \sum_h \big( \alpha_t(h) h(x_{t+1} = h' | x_t
+    = h) \big) g(f_{t+1} | x_{t+1} = h')
+	\end{equation*}
 
 2. Backward pass variable $\beta_t(h) = p(f_{t+1}, \ldots, f_T \| x_t
    = h, \theta)$ with recursion
