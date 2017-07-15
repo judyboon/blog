@@ -27,7 +27,7 @@ In this blog I am going to try to understand how the last two steps are performe
 
 # Hidden Markov model
 
-The most important component in speech recognition is the HMM part (which might not be the case with recent emergence of temporary neural network such as LSTM). A HMM consists of following gradients
+The most important component in speech recognition is the HMM part (which might not be the case with recent emergence of temporary neural network such as LSTM). A HMM consists of following ingredients
 
 * Emission distribution
 
@@ -47,11 +47,11 @@ Above problems can be solved efficiently with complexity $O(TK^2)$ where $K$ is 
 
 1. Forward pass variable $\alpha_t(h) = p(f_1, \ldots, f_t, x_t = h \| \theta)$ with recursion
 
-	$$\alpha_{t+1}(h') = \sum_h \( \alpha_t(h) h(x_{t+1} = h' | x_t = h) \) g(f_{t+1} | x_{t+1} = h')$$
+	$$\alpha_{t+1}(h') = \sum_h \big( \alpha_t(h) h(x_{t+1} = h' | x_t = h) \big) g(f_{t+1} | x_{t+1} = h')$$
 
 2. Backward pass variable $\beta_t(h) = p(f_{t+1}, \ldots, f_T \| x_t = h, \theta)$ with recursion
 
-	$$\beta_{t-1}(h') = \sum_h \( h(x_t = h | x_{t-1} = h') \beta_t(h) g(f_t | x_t = h) \)
+	$$\beta_{t-1}(h') = \sum_h \( h(x_t = h | x_{t-1} = h') \beta_t(h) g(f_t | x_t = h) \)$$
 
 3. Conditional state variable $\gamma_t(h) = p(x_t = h \| f_1, \ldots, f_T, \theta)$ with 
    
