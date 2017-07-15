@@ -15,7 +15,9 @@ Some references [^ref1], [^ref2]
 
 
 [^ref1]: A tutorial on hidden Markov models and selected applications in speech recognition
+
 [^ref2]: An introduction to hybrid HMM/Connectionist continuous speech recognition
+
 [^ref3]: Deep neural networks for acoustic modeling in speech recognition
 
 
