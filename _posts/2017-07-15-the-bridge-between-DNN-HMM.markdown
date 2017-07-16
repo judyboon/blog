@@ -153,9 +153,9 @@ $(f_1, \cdots, f_T)$ as well as their corresponding labels $(c_1,
 \cdots, c_T)$. We could train a neural network to approximate $p(c_t |
 f_t)$. For example we could fit a convolutional network with certain
 loss function using back propagation algorithms. Once the mapping from
-$f_t$ to $c_t$ is trained, we use the output of from the trained DNN
-as the latent state estimate for a testing sequence. According to
-Bayes's law, we have
+$f_t$ to $c_t$ is trained, we use the output of the trained DNN as the
+latent state estimate for a testing sequence. According to Bayes's
+law, we have
 
 $$ p(f_t | x_t) = \frac{p(x_t | f_t) * p(f_t)}{p(x_t)}. $$
 
@@ -172,7 +172,7 @@ emission distribution. First, we removed the parametric assumption of
 the emission distribution, leading to a more general training
 framework. Second, the feature mapping $f_t = \phi(y_t)$ mentioned
 previously could be simplified. This greatly reduced our labor in
-choosing the "correct"" mapping function, since the high level
+choosing the "correct" mapping function, since the high level
 features are automatically learned in a DNN model [^ref4].
 
 
