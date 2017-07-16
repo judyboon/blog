@@ -140,7 +140,7 @@ maximum likelihood of observing the audio features.
 # Modeling emission distribution using DNN
 
 Once the feature space representations of audio signal $(f_1, \cdots,
-\f_T)$ are obtained, the emission distribution in the HMM framework is
+f_T)$ are obtained, the emission distribution in the HMM framework is
 often assumed to be multinomial (for discrete features), Gaussian or
 mixture of Gaussian (for continuous features). Recently there has been
 an emergence where the emission distribution is replaced with a deep
@@ -169,11 +169,11 @@ algorithms in HMM.
 
 There are several advantages of using a pre-trained model as the
 emission distribution. First, we removed the parametric assumption of
-the emission distribution, leading to a more general
-situation. Second, the feature mapping $f_t = \phi(y_t)$ mentioned
+the emission distribution, leading to a more general training
+framework. Second, the feature mapping $f_t = \phi(y_t)$ mentioned
 previously could be simplified. This greatly reduced our labor in
-choosing a suitable mapping function, since the high level features
-are automatically learned in a DNN model [^ref4].
+choosing the "correct"" mapping function, since the high level
+features are automatically learned in a DNN model [^ref4].
 
 
 This idea leads following iterative optimization
