@@ -211,7 +211,7 @@ topic for my next blog.
 [^ref3]: Geoffrey Hinton *et. al* *Deep neural networks for acoustic
     modeling in speech recognition*, 2012
 	
-[^ref4]: Ossama Abdel-Hamid *et. al* *Applying Convolutional Neural
+[^ref4]: Ossama Abdel-Hamid *et al.* *Applying Convolutional Neural
     Networks concepts to hybrid NN-HMM model for speech recognition*
     2012
 
