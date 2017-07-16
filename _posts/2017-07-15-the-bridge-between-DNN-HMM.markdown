@@ -139,21 +139,44 @@ maximum likelihood of observing the audio features.
 
 # Modeling emission distribution using DNN
 
-The emission distribution is often assumed to be discrete, Gaussian or
-mixture of Gaussian in previous speech recognition tasks. Recently
-there has been an emergence where the emission distribution is replaced
-with a deep neural network, leading to DNN/HMM framework. In this
-framework, a DNN is trained to estimate $p(x_t \| f_t)$. According to
+Once the feature space representations of audio signal $(f_1, \cdots,
+\f_T)$ are obtained, the emission distribution in the HMM framework is
+often assumed to be multinomial (for discrete features), Gaussian or
+mixture of Gaussian (for continuous features). Recently there has been
+an emergence where the emission distribution is replaced with a deep
+neural network, leading to DNN/HMM framework. 
+
+
+In the DNN/HMM framework, a DNN is trained to estimate $p(x_t \| f_t)$
+by training on a labeled corpus. Suppose we have feature sequence
+$(f_1, \cdots, f_T)$ as well as their corresponding labels $(c_1,
+\cdots, c_T)$. We could train a neural network to approximate $p(c_t |
+f_t)$. For example we could fit a convolutional network with certain
+loss function using back propagation algorithms. Once the mapping from
+$f_t$ to $c_t$ is trained, we use the output of from the trained DNN
+as the latent state estimate for a testing sequence. According to
 Bayes's law, we have
 
 $$ p(f_t | x_t) = \frac{p(x_t | f_t) * p(f_t)}{p(x_t)}. $$
 
-This equation suggests that the emission distribution could be
-estimated with a DNN model by dividing the "posterior" state
-distribution $p(x_t \| f_t)$ by the "prior" state distribution
+This equation suggests that the emission distribution in HMM could be
+replaced by the DNN model, by dividing the "posterior" state
+distribution $p(x_t \| f_t)$ with the "prior" state distribution
 $p(x_t)$ [^ref2]. The factor $p(f_t)$ is common across all different
 states, therefore it is canceled in the Forward-Backward pass
-algorithms in HMM. This idea leads following iterative optimization
+algorithms in HMM. 
+
+
+There are several advantages of using a pre-trained model as the
+emission distribution. First, we removed the parametric assumption of
+the emission distribution, leading to a more general
+situation. Second, the feature mapping $f_t = \phi(y_t)$ mentioned
+previously could be simplified. This greatly reduced our labor in
+choosing a suitable mapping function, since the high level features
+are automatically learned in a DNN model [^ref4].
+
+
+This idea leads following iterative optimization
 procedure
 
 1. Train a DNN/HMM based on a labeled data set, e.g. TIMIT
@@ -187,6 +210,10 @@ topic for my next blog.
 
 [^ref3]: Geoffrey Hinton *et. al* *Deep neural networks for acoustic
     modeling in speech recognition*, 2012
+	
+[^ref4]: Ossama Abdel-Hamid *et. al* *Applying Convolutional Neural
+    Networks concepts to hybrid NN-HMM model for speech recognition*
+    2012
 
 
 
