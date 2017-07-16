@@ -82,48 +82,48 @@ Above problems can be solved efficiently with complexity $O(TK^2)$
 where $K$ is the number of latent states in the model [^ref1]. The key
 additional variables that are introduced to solve these problems are
 
-1. Forward pass variable $\alpha_t(h) = p(f_1, \ldots, f_t, x_t = h \|
+1. Forward pass variable $\alpha_t(s) = p(f_1, \ldots, f_t, x_t = s \|
    \theta)$ with recursion
 
-	$$\alpha_{t+1}(h') = \sum_h \big( \alpha_t(h) h(x_{t+1} = h' | x_t
-    = h) \big) g(f_{t+1} | x_{t+1} = h')$$
+	$$\alpha_{t+1}(s') = \sum_s \big( \alpha_t(s) h(x_{t+1} = s' | x_t
+    = s) \big) g(f_{t+1} | x_{t+1} = s')$$
 
-2. Backward pass variable $\beta_t(h) = p(f_{t+1}, \ldots, f_T \| x_t
-   = h, \theta)$ with recursion
+2. Backward pass variable $\beta_t(s) = p(f_{t+1}, \ldots, f_T \| x_t
+   = s, \theta)$ with recursion
 
-	$$\beta_{t-1}(h') = \sum_h \big( h(x_t = h | x_{t-1} = h')
-    \beta_t(h) g(f_t | x_t = h) \big)$$
+	$$\beta_{t-1}(s') = \sum_s \big( h(x_t = s | x_{t-1} = s')
+    \beta_t(s) g(f_t | x_t = s) \big)$$
 
-3. Conditional state variable $\gamma_t(h) = p(x_t = h \| f_1, \ldots,
+3. Conditional state variable $\gamma_t(s) = p(x_t = s \| f_1, \ldots,
    f_T, \theta)$ with
    
-   $$\gamma_t(h) = \frac{\alpha_t(h) \beta_t(h)}{ p(f_1, \ldots, f_T |
-   \theta )} = \frac{\alpha_t(h) \beta_t(h)}{ \sum_h \alpha_t(h)
-   \beta_t(h) }$$
+   $$\gamma_t(s) = \frac{\alpha_t(s) \beta_t(s)}{ p(f_1, \ldots, f_T |
+   \theta )} = \frac{\alpha_t(s) \beta_t(s)}{ \sum_{s'} \alpha_t(s')
+   \beta_t(s') }$$
    
-4. Viterbi variable $\delta_t(h) = \max_{x_1, \cdots, x_{t-1}} p(f_1,
-   \ldots, f_t, x_1, \cdots, x_{t-1}, x_t = h \| \theta)$ (Note the
-   difference of $\delta_t(h)$ and $\alpha_t(h)$ is just substituting
+4. Viterbi variable $\delta_t(s) = \max_{x_1, \cdots, x_{t-1}} p(f_1,
+   \ldots, f_t, x_1, \cdots, x_{t-1}, x_t = s \| \theta)$ (Note the
+   difference of $\delta_t(s)$ and $\alpha_t(s)$ is just substituting
    summation with maximization)
 
-5. Baum-Welch variable $\xi_t(h, h') = p(x_t = h, x_{t+1} = h' \| y_1,
+5. Baum-Welch variable $\xi_t(s, s') = p(x_t = s, x_{t+1} = s' \| y_1,
    \ldots, y_T, \theta)$ with
 
-	$$\xi_t(h, h') = \frac{\alpha_t(h) h(x_{t+1} = h' | x_t = h)
-    g(y_{t+1} | x_{t+1} = h') \beta_{t+1}(h')}{ p(y_1, \ldots, y_T |
+	$$\xi_t(s, s') = \frac{\alpha_t(s) h(x_{t+1} = s' | x_t = s)
+    g(y_{t+1} | x_{t+1} = s') \beta_{t+1}(s')}{ p(y_1, \ldots, y_T |
     \theta)} $$
 
-For the last variable, it is used (combined with $\gamma_t(h)$) for
+For the last variable, it is used (combined with $\gamma_t(s)$) for
 the EM algorithm (the famous Baum-Welch algorithm) for estimating
-$\theta$. Note that $\xi_t(h, h')$ is *expected number of transitions
-from $h$ to $h'$* and $\gamma_t(h)$ is *expected number of transitions
-from $h$*. Then the re-estimation of model transition distribution
+$\theta$. Note that $\xi_t(s, s')$ is *expected number of transitions
+from $s$ to $s'$* and $\gamma_t(s)$ is *expected number of transitions
+from $s$*. Then the re-estimation of model transition distribution
 ($h(\cdot | \cdot))$ can be derived accordingly [^ref1].
 
 The estimation of emission parameter can be derived using a process
 similar to EM estimation of standard GMM. The conditional state
-variable $\gamma_t(h)$ is analogous to the expectation of component
-indicator in GMM. By plugging $\gamma_t(h)$ into the *E* step of
+variable $\gamma_t(s)$ is analogous to the expectation of component
+indicator in GMM. By plugging $\gamma_t(s)$ into the *E* step of
 GMM, the emission distribution parameter can be updated in the *M*
 step. The emission distribution is usually assumed to be Gaussian or
 mixtures of Gaussian to enable closed form update in Baum-Welch
