@@ -63,6 +63,9 @@ horizontally.
 ![Viterbi trellis decoding][viterbi_trellis]
 
 
+[^ref1]: Daniel Jurafsky and James H Martin, *Speech and Language
+    Processing*, 2nd Edition, 2008
 
 [hierarchical_graph]: figures/2017-07-18-phone-word-sentence-hierarchy.png
+
 [viterbi_trellis]: figures/2017-07-18-viterbi-trellis.png
