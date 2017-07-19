@@ -15,9 +15,9 @@ step. In this blog I am going to write what I have learned.
 
 # Hierarchy of phones, words and sentences
 
-After converting audio wavefile to feature space, we have a sequence
-$(f_1, \ldots, f_T)$. The goal is to find a sequence of words $(w_1,
-\ldots, w_N)$ that matches the feature sequence best. 
+After converting original audio wavefile to features, we have a
+sequence $(f_1, \ldots, f_T)$. The goal is to find a sequence of words
+$(w_1, \ldots, w_N)$ that matches the feature sequence best.
 
 In my previous blog, I have learned that people have been using HMM to
 model basic units (phones) in speech. To bridge the gap between word
@@ -30,14 +30,15 @@ transition-in, steady-state, transition-out regions of the phone.
 
 **A word is consisted by a sequence of phones.** For example, "one" is
 composed of three phones: "w", "ah" and "n". The word model is just
-the sequential concatenation of the phones. 
+the sequential concatenation of the phone models. 
 
 **Lexicon contains information about phone sequence of words**.  There
 is a dictionary (lexicon) which includes phone sequence for each of
-word. Therefore once all phones are trained by HMM models, the word
-models are available by looking at the dictionary and concatenate
-certain phone models. Compared with fitting a HMM for individual word,
-this strategy greatly reduced the complexity.
+word. Therefore once all phones are represented by pre-trained HMM
+models, the word models become available by searching in the
+dictionary and concatenating phone level models belonging to that
+word. Compared with fitting a HMM for individual word, this strategy
+greatly reduced the complexity.
 
 **A sentence is a grammatically valid sequence of words**. Words do
 not randomly connect to form a sentence. The transition between
@@ -55,9 +56,9 @@ two)$ represents the transition probability from digit two to one.
 
 
 Given this hierarchical transition matrix, a Viterbi trellis decoding
-method could be used. Following figure from [^ref1] shows the scheme
-of this decoding process. The words (digits) are stacked vertically
-and the feature sequence is shown horizontally.
+method is used. Following figure from [^ref1] shows the scheme of this
+decoding process. The words (digits) are stacked vertically and the
+feature sequence is shown horizontally.
 
 ![Viterbi trellis decoding][viterbi_trellis]
 
