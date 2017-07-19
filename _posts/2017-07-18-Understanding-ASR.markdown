@@ -66,6 +66,6 @@ feature sequence is shown horizontally.
 [^ref1]: Daniel Jurafsky and James H Martin, *Speech and Language
     Processing*, 2nd Edition, 2008
 
-[hierarchical_graph]: /assets/2017-07-18/phone-word-sentence-hierarchy.png
+[hierarchical_graph]: {{ site.url }}/assets/2017-07-18/phone-word-sentence-hierarchy.png
 
-[viterbi_trellis]: /assets/2017-07-18/viterbi_trellis.png
+[viterbi_trellis]: {{ site.url }}/assets/2017-07-18/viterbi_trellis.png
