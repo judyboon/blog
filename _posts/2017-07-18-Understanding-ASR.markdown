@@ -47,18 +47,17 @@ adjacent words can be estimated from a large text corpus.
 # Combine all together
 
 Let's put together what we have learned in a simple digit recognition
-task. The words are the digits from one to nine. Following figure
-shows the hierarchical transitions of this task. $p(one \| two)$
-represents the transition probability from digit two to one.
+task. The words are the digits from one to nine. Following figure from
+[^ref1] shows the hierarchical transitions of this task. $p(one \|
+two)$ represents the transition probability from digit two to one.
 
 ![hierarchical graph][hierarchical_graph]
 
 
 Given this hierarchical transition matrix, a Viterbi trellis decoding
-method could be used. Following figure shows the scheme of this
-decoding process. The words (digits) are stacked vertically and the
-feature sequence (here is denoted by $(o_1, \ldots, o_T)$) is shown
-horizontally. 
+method could be used. Following figure from [^ref1] shows the scheme
+of this decoding process. The words (digits) are stacked vertically
+and the feature sequence is shown horizontally.
 
 ![Viterbi trellis decoding][viterbi_trellis]
 
@@ -68,4 +67,4 @@ horizontally.
 
 [hierarchical_graph]: figures/2017-07-18-phone-word-sentence-hierarchy.png
 
-[viterbi_trellis]: figures/2017-07-18-viterbi-trellis.png
+[viterbi_trellis]: figures/2017-07-18-viterbi_trellis.png
